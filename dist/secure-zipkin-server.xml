@@ -1,0 +1,24 @@
+<service>
+    <id>SecureZipkinServer</id>
+    <name>Secure Zipkin Server</name>
+    <description>Secure Zipkin Server</description>
+    <workingdirectory>%BASE%\</workingdirectory>
+    <logpath>%BASE%\logs</logpath>
+    <logmode>rotate</logmode>
+
+    <executable>java</executable>
+
+    <!--JMX Args for graceful stop -->
+    <startargument>-Dspring.application.admin.enabled=true</startargument>
+    <startargument>-Dcom.sun.management.jmxremote.port=50201</startargument>
+    <startargument>-Dcom.sun.management.jmxremote.authenticate=false</startargument>
+    <startargument>-Dcom.sun.management.jmxremote.ssl=false</startargument>
+    <startargument>-jar</startargument>
+    <startargument>secure-zipkin-server-0.0.1-SNAPSHOT.jar</startargument>
+    <startargument>--spring.config.location=file:/secure-zipkin-server.properties</startargument>
+
+    <stopexecutable>java</stopexecutable>
+    <stopargument>-jar</stopargument>
+    <stopargument>SpringBootStopper.jar</stopargument>
+    <stopargument>50201</stopargument>
+</service>
