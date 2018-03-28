@@ -1,11 +1,12 @@
 # secure-zipkin-server
+Opinionated setup to secure access to the zipkin server. 
 
 
-# Creating a https cert
+## Creating a https cert
 
-## Generate a self signed cert
+### Generate a self signed cert
 keytool -genkeypair -alias tomcat -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore keystore.p12 -validity 3650
 
-## Check contents of key store 
+### Check contents of key store 
 keytool -list -v -storetype pkcs12 -keystore keystore.p12
 
